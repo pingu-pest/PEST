@@ -11,6 +11,7 @@
       position: fixed; /* スクロールしても位置が固定 */
       top: 30px; /* 上から30px */
       right: 30px; /* 右から30px */
+      z-index: 9999;
     }
   </style>
   <!-- おしらせ -->
@@ -124,6 +125,26 @@
       height: 100vh;
     }
   </style>
+  <!-- サイト -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 100%;
+      max-width: 1024px; /* 最大幅 */
+      margin: 0 auto;    /* 自動で中央寄せ */
+      padding: 0 18px;   /* 小さい画面用の余白 */
+      box-sizing: border-box;
+    }
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 360px; /* 1024px以上の場合、左右に余白を広げる */
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- 右上固定ボタン -->
@@ -224,6 +245,14 @@
     </div>
   </section>
   <!-- サイト -->
+  <div class="container">
+    <iframe
+    src="https://pingu-pest.github.io/home/"
+    frameborder="0"
+    width="100%"
+    height="500px"
+    allowfullscreen></iframe>
+  </div>
   <!-- お問い合わせ -->
   <!-- メニュー -->
 </body>
