@@ -9,8 +9,8 @@
   <style>
     .button-right {
       position: fixed; /* スクロールしても位置が固定 */
-      top: 25px; /* 上から30px */
-      right: 25px; /* 右から30px */
+      top: 20px; /* 上から30px */
+      right: 20px; /* 右から30px */
       z-index: 9999;
     }
   </style>
@@ -74,11 +74,11 @@
         flex-direction: row; /* 横並びに変更 */
         align-items: center; /* 画像と文章の縦位置を揃える */
         gap: 15px; /* 画像と文章の間に余白を追加 */
-        padding: 20px 20px; /* 横幅が広い場合の余白を拡大 */
+        padding: 20px 50px; /* 横幅が広い場合の余白を拡大 */
         max-width: 1024px; /* 横幅の最大制限 */
       }
       .image {
-        max-width: 450px; /* 画像の最大幅を固定 */
+        max-width: 500px; /* 画像の最大幅を固定 */
         margin-bottom: 0; /* 横並び時には下余白をリセット */
       }
       .text {
@@ -132,7 +132,10 @@
       padding: 0;
       font-family: Arial, sans-serif;
     }
-    .container {
+    .container1 iframe {
+      border-radius: 10px; /* 角を少し丸める */
+    }
+    .container1 {
       width: 100%;
       max-width: 1024px; /* 最大幅 */
       margin: 0 auto;    /* 自動で中央寄せ */
@@ -140,8 +143,8 @@
       box-sizing: border-box;
     }
     @media (min-width: 1024px) {
-      .container {
-        padding: 0 360px; /* 1024px以上の場合、左右に余白を広げる */
+      .container1 {
+        padding: 0 240px; /* 1024px以上の場合、左右に余白を広げる */
       }
     }
   </style>
@@ -156,6 +159,27 @@
     </a>
   </div>
   <!-- メイン -->
+  <section class="hero is-info">
+    <section class="hero is-info">
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <style>
+                  .super-large {
+                    font-size: 50px; /* サイズの指定 */
+                    font-weight: bold; /* 太字 */
+                  }
+                </style>
+                <a  href="#" class="super-large has-text-white">PEST</a>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+  </section>
+</section>
   <!-- おしらせ -->
   <section class="hero">
     <div class="hero-body">
@@ -198,8 +222,8 @@
       <div class="container">
         <img src="01.png" class="image">
         <div class="text">
-          <p class="subtitle is-5">PEST教は2012年1月1日に創教された。</p>
-          <p class="subtitle is-5">PEST教の創始者の名前は賀家凰介、創始者の生まれた日は3月26日。</p>
+          <p class="subtitle is-5">PEST教は2025年1月1日に再開宗された。</p>
+          <p class="subtitle is-5">PEST教の創始者の名前は賀家凰介、創始者の誕生日は2012年3月26日。</p>
           <p class="subtitle is-5">Pest(or虫)は互いに全てのPest(or虫)の名前、顔、特徴を覚えている(Pest(or虫)は全てで2800不可説不可説転匹)。</p>
           <section class="hero is-small">
             <div class="hero-body">
@@ -245,15 +269,31 @@
     </div>
   </section>
   <!-- サイト -->
-  <div class="container">
-    <iframe
-    src="https://pingu-pest.github.io/home/"
-    frameborder="0"
-    width="100%"
-    height="500px"
-    allowfullscreen></iframe>
-  </div>
-  <!-- お問い合わせ -->
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <p class="title is-1 has-text-centered has-text-white">サイト</p>
+      <section class="hero is-small">
+        <div class="hero-body">
+        </div>
+      </section>
+      <div class="container1">
+        <iframe
+        src="https://pingu-pest.github.io/home/"
+        frameborder="0"
+        width="100%"
+        height="400px"
+        allowfullscreen></iframe>
+      </div>
+      <section class="hero is-small">
+        <div class="hero-body">
+        </div>
+      </section>
+      <div class="is-flex is-justify-content-center is-align-items-center">
+        <a href="#" class="button is-rounded is-medium has-text-danger">すべてのサイトをみる</a>
+      </div>
+    </div>
+  </section>
+  <!-- お問い合わせは今度作ると思う -->
   <!-- メニュー -->
 </body>
 </html>
