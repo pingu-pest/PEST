@@ -144,7 +144,71 @@
     }
     @media (min-width: 1024px) {
       .container1 {
-        padding: 0 240px; /* 1024px以上の場合、左右に余白を広げる */
+        padding: 0 200px; /* 1024px以上の場合、左右に余白を広げる */
+      }
+    }
+  </style>
+  <!-- メニュー -->
+  <style>
+    /* 全体リセット */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Arial", sans-serif;
+    }
+    /* 背景スタイル */
+    .background {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* メニューコンテナ */
+    .menu-container {
+      background-color: #fff; /* 白いコンテナ */
+      border-radius: 15px;
+      width: 90%;
+      max-width: 1200px;
+      padding: 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    /* キャラクター画像 */
+    .characters {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .characters img {
+      width: 100px;
+      height: auto;
+      margin: 0 20px;
+    }
+    /* メニューリスト */
+    .menu ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 初期：2列 */
+      gap: 10px 15px; /* 縦・横の余白 */
+      list-style-type: none;
+      padding: 0 10px; /* 左右少しの余白 */
+    }
+    .menu li {
+      background-color: #FFEDF3;
+      text-align: center;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #333;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+    .menu li:hover {
+      background-color: #FFB6C1;
+    }
+    /* 横幅が1024px以上の場合 */
+    @media (min-width: 1024px) {
+      .menu ul {
+        grid-template-columns: repeat(3, 1fr); /* 3列 */
+        gap: 20px 30px; /* そこそこの余白 */
+        padding: 0 50px; /* 左右余白を広めに */
       }
     }
   </style>
@@ -160,26 +224,24 @@
   </div>
   <!-- メイン -->
   <section class="hero is-info">
-    <section class="hero is-info">
-      <div class="hero-head">
-        <nav class="navbar">
-          <div class="container">
-            <div class="navbar-brand">
-              <a class="navbar-item">
-                <style>
-                  .super-large {
-                    font-size: 50px; /* サイズの指定 */
-                    font-weight: bold; /* 太字 */
-                  }
-                </style>
-                <a  href="#" class="super-large has-text-white">新PESTの体験版</a>
-              </a>
-            </div>
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <style>
+                .super-large {
+                  font-size: 50px; /* サイズの指定 */
+                  font-weight: bold; /* 太字 */
+                }
+              </style>
+              <a  href="#" class="super-large has-text-white">PEST</a>
+            </a>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
+    </div>
   </section>
-</section>
   <!-- おしらせ -->
   <section class="hero">
     <div class="hero-body">
@@ -295,5 +357,29 @@
   </section>
   <!-- お問い合わせは今度作ると思う -->
   <!-- メニュー -->
+  <section class="hero is-danger">
+    <div class="hero-body">
+      <div class="background">
+        <!-- メニューコンテナ -->
+        <div class="menu-container">
+          <!-- キャラクター画像 -->
+          <div class="characters">
+            <img src="01.png" class="blue-cat-img">
+          </div>
+          <!-- メニューリスト -->
+          <nav class="menu">
+            <ul>
+              <li>ホーム</li>
+              <li>おしらせ</li>
+              <li>「PEST教」とは</li>
+              <li>ドキュメント</li>
+              <li>サイト</li>
+              <li>お問い合わせ</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
