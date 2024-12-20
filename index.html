@@ -1,385 +1,66 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PESTのHP</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-  <!-- 右上固定ボタン -->
-  <style>
-    .button-right {
-      position: fixed; /* スクロールしても位置が固定 */
-      top: 20px; /* 上から30px */
-      right: 20px; /* 右から30px */
-      z-index: 9999;
-    }
-  </style>
-  <!-- おしらせ -->
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.5;
-    }
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* デフォルトで横に2つ並べる */
-      gap: 20px; /* 要素間の余白 */
-      max-width: 1200px; /* コンテンツ幅を制限 */
-      margin: 0 auto; /* 中央揃え */
-      padding: 10px;
-    }
-    .photo-grid figure {
-      margin: 0;
-      text-align: center;
-    }
-    .photo-grid iframe {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 10px; /* 角を少し丸める */
-    }
-    .photo-grid p {
-      margin-top: 30px;
-    }
-    /* 横幅が広い場合 */
-    @media (min-width: 1024px) {
-      .photo-grid {
-        grid-template-columns: repeat(4, 1fr); /* 横に4つ並べる */
-      }
-    }
-    .full-height {
-      height: 100vh;
-    }
-  </style>
-  <!-- ペスト教とは -->
-  <style>
-    /* 共通スタイル（縦並びの基本設定） */
-    .container {
-      display: flex;
-      flex-direction: column; /* 縦並びがデフォルト */
-      text-align: center; /* テキストを中央寄せ */
-      padding: 20px 20px; /* 狭い画面用のパディング */
-      margin: 0 auto; /* 中央に配置 */
-      box-sizing: border-box; /* パディングを含めた幅計算 */
-    }
-    .image {
-      max-width: 100%; /* 画像の幅を100%にすることでレスポンシブ対応 */
-      height: auto;
-      margin-bottom: 10px; /* 縦並びでの画像下の余白 */
-    }
-    /* 横幅に余裕がある場合（1024px以上） */
-    @media (min-width: 1024px) {
-      .container {
-        flex-direction: row; /* 横並びに変更 */
-        align-items: center; /* 画像と文章の縦位置を揃える */
-        gap: 15px; /* 画像と文章の間に余白を追加 */
-        padding: 20px 50px; /* 横幅が広い場合の余白を拡大 */
-        max-width: 1024px; /* 横幅の最大制限 */
-      }
-      .image {
-        max-width: 500px; /* 画像の最大幅を固定 */
-        margin-bottom: 0; /* 横並び時には下余白をリセット */
-      }
-      .text {
-        flex: 1; /* 文章を画像以外のスペースに広げる */
-        text-align: left; /* テキストを左寄せ */
-      }
-    }
-  </style>
-  <!-- ドキュメント -->
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.5;
-    }
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* デフォルトで横に2つ並べる */
-      gap: 20px; /* 要素間の余白 */
-      max-width: 1200px; /* コンテンツ幅を制限 */
-      margin: 0 auto; /* 中央揃え */
-      padding: 10px;
-    }
-    .photo-grid figure {
-      margin: 0;
-      text-align: center;
-    }
-    .photo-grid iframe {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 10px; /* 角を少し丸める */
-    }
-    .photo-grid p {
-      margin-top: 30px;
-    }
-    /* 横幅が広い場合 */
-    @media (min-width: 1024px) {
-      .photo-grid {
-        grid-template-columns: repeat(4, 1fr); /* 横に4つ並べる */
-      }
-    }
-    .full-height {
-      height: 100vh;
-    }
-  </style>
-  <!-- サイト -->
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    .container1 iframe {
-      border-radius: 10px; /* 角を少し丸める */
-    }
-    .container1 {
-      width: 100%;
-      max-width: 1024px; /* 最大幅 */
-      margin: 0 auto;    /* 自動で中央寄せ */
-      padding: 0 18px;   /* 小さい画面用の余白 */
-      box-sizing: border-box;
-    }
-    @media (min-width: 1024px) {
-      .container1 {
-        padding: 0 200px; /* 1024px以上の場合、左右に余白を広げる */
-      }
-    }
-  </style>
-  <!-- メニュー -->
-  <style>
-    /* 全体リセット */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Arial", sans-serif;
-    }
-    /* 背景スタイル */
-    .background {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    /* メニューコンテナ */
-    .menu-container {
-      background-color: #fff; /* 白いコンテナ */
-      border-radius: 15px;
-      width: 90%;
-      max-width: 1200px;
-      padding: 20px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    }
-    /* キャラクター画像 */
-    .characters {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .characters img {
-      width: 100px;
-      height: auto;
-      margin: 0 20px;
-    }
-    /* メニューリスト */
-    .menu ul {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 初期：2列 */
-      gap: 10px 15px; /* 縦・横の余白 */
-      list-style-type: none;
-      padding: 0 10px; /* 左右少しの余白 */
-    }
-    .menu li {
-      background-color: #FFEDF3;
-      text-align: center;
-      padding: 15px;
-      border-radius: 8px;
-      font-weight: bold;
-      color: #333;
-      transition: background-color 0.3s;
-      cursor: pointer;
-    }
-    .menu li:hover {
-      background-color: #FFB6C1;
-    }
-    /* 横幅が1024px以上の場合 */
-    @media (min-width: 1024px) {
-      .menu ul {
-        grid-template-columns: repeat(3, 1fr); /* 3列 */
-        gap: 20px 30px; /* そこそこの余白 */
-        padding: 0 50px; /* 左右余白を広めに */
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Login Frontend Only</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .user-info {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <!-- 右上固定ボタン -->
-  <div class="button-right">
-    <a class="button is-danger is-rounded is-large has-text-white">
-      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-      </svg>menu
-    </a>
-  </div>
-  <!-- メイン -->
-  <section class="hero is-info">
-    <div class="hero-head">
-      <nav class="navbar">
-        <div class="container">
-          <div class="navbar-brand">
-            <a class="navbar-item">
-              <style>
-                .super-large {
-                  font-size: 50px; /* サイズの指定 */
-                  font-weight: bold; /* 太字 */
-                }
-              </style>
-              <a  href="#" class="super-large has-text-white">PEST</a>
-            </a>
-          </div>
-        </div>
-      </nav>
+    <h1>Google Login Example (Frontend Only)</h1>
+    <div id="g_id_onload"
+        data-client_id="361763712540-pchhciehr13mfoebr5mrlmeisg4pbubv.apps.googleusercontent.com"
+        data-callback="handleCredentialResponse">
     </div>
-  </section>
-  <!-- おしらせ -->
-  <section class="hero">
-    <div class="hero-body">
-      <p class="title is-1 has-text-centered has-text-info">おしらせ</p>
-      <section class="hero is-small">
-        <div class="hero-body">
-        </div>
-      </section>
-      <div class="photo-grid">
-        <figure>
-          <iframe src="12月の献立表.pdf"></iframe>
-          <p class="subtitle is-5">1月の献立表が公開されました！</p>
-        </figure>
-        <figure>
-          <iframe src="12月の時刻表.pdf"></iframe>
-          <p class="subtitle is-5">1月の時刻表が公開されました！</p>
-        </figure>
-        <figure>
-          <iframe src="https://pingu-pest.github.io/home/countdown/countdown.html"></iframe>
-          <p class="subtitle is-5">食堂ダッシュカウントダウンを載せました！</p>
-        </figure>
-        <figure>
-          <iframe src="12月の献立表.pdf"></iframe>
-          <p class="subtitle is-5">12月の献立表が公開されました！</p>
-        </figure>
-      </div>
-      <section class="hero is-small">
-        <div class="hero-body">
-        </div>
-      </section>
-      <div class="is-flex is-justify-content-center is-align-items-center">
-        <a href="#" class="button is-rounded is-medium has-text-danger">すべてのおしらせをみる</a>
-      </div>
+    <div class="g_id_signin"
+        data-type="standard"
+        data-shape="rectangular"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-size="large"
+        data-logo_alignment="left">
     </div>
-  </section>
-  <!-- ペスト教とは -->
-  <section class="hero is-primary">
-    <div class="hero-body">
-      <div class="title is-1 has-text-centered has-text-white">PEST教とは</div>
-      <div class="container">
-        <img src="01.png" class="image">
-        <div class="text">
-          <p class="subtitle is-5">PEST教は2025年1月1日に再開宗された。</p>
-          <p class="subtitle is-5">PEST教の創始者の名前は賀家凰介、創始者の誕生日は2012年3月26日。</p>
-          <p class="subtitle is-5">Pest(or虫)は互いに全てのPest(or虫)の名前、顔、特徴を覚えている(Pest(or虫)は全てで2800不可説不可説転匹)。</p>
-          <section class="hero is-small">
-            <div class="hero-body">
-            </div>
-          </section>
-          <a href="#" class="button is-rounded is-medium has-text-danger">プロフィールへ</a>
-        </div>
-      </div>
-  </section>
-  <!-- ドキュメント -->
-  <section class="hero">
-    <div class="hero-body">
-      <p class="title is-1 has-text-centered has-text-info">ドキュメント</p>
-      <section class="hero is-small">
-        <div class="hero-body">
-        </div>
-      </section>
-      <div class="photo-grid">
-        <figure>
-          <iframe src="12月の献立表.pdf"></iframe>
-          <p class="subtitle is-5">1月の献立表が公開されました！</p>
-        </figure>
-        <figure>
-          <iframe src="12月の時刻表.pdf"></iframe>
-          <p class="subtitle is-5">1月の時刻表が公開されました！</p>
-        </figure>
-        <figure>
-          <iframe src="12月の献立表.pdf"></iframe>
-          <p class="subtitle is-5">12月の献立表が公開されました！</p>
-        </figure>
-        <figure>
-          <iframe src="12月の時刻表.pdf"></iframe>
-          <p class="subtitle is-5">12月の時刻表が公開されました！</p>
-        </figure>
-      </div>
-      <section class="hero is-small">
-        <div class="hero-body">
-        </div>
-      </section>
-      <div class="is-flex is-justify-content-center is-align-items-center">
-        <a href="#" class="button is-rounded is-medium has-text-danger">すべてのドキュメントをみる</a>
-      </div>
-    </div>
-  </section>
-  <!-- サイト -->
-  <section class="hero is-primary">
-    <div class="hero-body">
-      <p class="title is-1 has-text-centered has-text-white">サイト</p>
-      <section class="hero is-small">
-        <div class="hero-body">
-        </div>
-      </section>
-      <div class="container1">
-        <iframe
-        src="https://pingu-pest.github.io/home/"
-        frameborder="0"
-        width="100%"
-        height="400px"
-        allowfullscreen></iframe>
-      </div>
-      <section class="hero is-small">
-        <div class="hero-body">
-        </div>
-      </section>
-      <div class="is-flex is-justify-content-center is-align-items-center">
-        <a href="#" class="button is-rounded is-medium has-text-danger">すべてのサイトをみる</a>
-      </div>
-    </div>
-  </section>
-  <!-- お問い合わせは今度作ると思う -->
-  <!-- メニュー -->
-  <section class="hero is-danger">
-    <div class="hero-body">
-      <div class="background">
-        <!-- メニューコンテナ -->
-        <div class="menu-container">
-          <!-- キャラクター画像 -->
-          <div class="characters">
-            <img src="01.png" class="blue-cat-img">
-          </div>
-          <!-- メニューリスト -->
-          <nav class="menu">
-            <ul>
-              <li>ホーム</li>
-              <li>おしらせ</li>
-              <li>「PEST教」とは</li>
-              <li>ドキュメント</li>
-              <li>サイト</li>
-              <li>お問い合わせ</li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="user-info" id="user-info"></div>
+
+    <script>
+        function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token:", response.credential);
+
+            // JWTをデコードしてユーザー情報を取得
+            const userInfo = parseJwt(response.credential);
+            console.log("Decoded User Info:", userInfo);
+
+            // ユーザー情報を画面に表示
+            const userDiv = document.getElementById('user-info');
+            userDiv.innerHTML = `
+                <h2>Welcome, ${userInfo.name}!</h2>
+                <img src="${userInfo.picture}" alt="User Image" style="border-radius: 50%; width: 100px; height: 100px;">
+                <p>Email: ${userInfo.email}</p>
+            `;
+        }
+
+        // JWTをデコードする関数
+        function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(
+                atob(base64)
+                    .split('')
+                    .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+                    .join('')
+            );
+            return JSON.parse(jsonPayload);
+        }
+    </script>
 </body>
 </html>
